@@ -3,7 +3,7 @@ name: AAPS CI
 on:
   workflow_dispatch:
     inputs:
-      buildVariant:
+     tagName:
         description: 'Select Build Variant'
         required: true
         default: '3.4.2.2'
@@ -40,7 +40,8 @@ on:
           #     on JCenter. JCenter shut down in 2022 and these
           #     dependencies can no longer be resolved, causing
           #     the build to fail.
-    
+    buildVariant:
+    description: 'Select Build Variant'
         required: true
         default: 'fullRelease'
         type: choice
