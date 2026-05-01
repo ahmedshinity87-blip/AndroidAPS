@@ -15,33 +15,8 @@ on:
           - 3.4.2.0
           - 3.4.1.0
           - 3.4.0.0
-          # ── 3.3.x (JDK 21) ──────────────────────────────
-          - 3.3.2.1
-          - 3.3.2.0
-          - 3.3.1.3
-          # ── 3.2.x (JDK 17) ──────────────────────────────
-          - 3.2.0.4
-          - 3.2.0.3
-          - 3.2.0.2
-          - 3.2.0.1
-          - 3.2.0.0
-          # ── 3.1.x (JDK 17) ──────────────────────────────
-          - 3.1.0.3
-          - 3.1.0.2
-          - 3.1.0.1
-          - 3.1.0
-          # ── 3.0.x (JDK 11) ──────────────────────────────
-          - 3.0.0.2
-          - 3.0.0.1
-          - 3.0.0
-          # ── 2.x (build not supported) ────────────────────
-          # ⚠️  2.x versions depend on packages such as
-          #     com.google.android:flexbox that were only published
-          #     on JCenter. JCenter shut down in 2022 and these
-          #     dependencies can no longer be resolved, causing
-          #     the build to fail.
-    buildVariant:
-    description: 'Select Build Variant'
+ buildVariant:
+   description: 'Select Build Variant'
         required: true
         default: 'fullRelease'
         type: choice
@@ -228,17 +203,14 @@ jobs:
               -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
               -Pandroid.injected.signing.key.password="$KEY_PASSWORD"
       
-  - name: Rename APKs with version
-    run: |
-      mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk .
-      mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk .
+      - name: Rename APKs with version
+        run: |
+          mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk .
+          mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk .
 
- - name: Upload APKs
-   uses: actions/upload-artifact@v4
-   with:
-    name: AAPS-APKs
-    path: "*.apk"
-
-       
-
+      - name: Upload APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: AAPS-APKs
+          path: "*.apk"
         
