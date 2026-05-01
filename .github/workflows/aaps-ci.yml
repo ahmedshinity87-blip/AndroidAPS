@@ -147,7 +147,7 @@ jobs:
           echo "✅ Keystore, alias, and key password are valid."
 
           rm -f "$KEYTOOL_LOG"
-          echo "✅ Keystore and credentials validated.
+          echo "✅ Keystore and credentials validated."
 
       - name: Checkout source code at tag
         uses: actions/checkout@v5
