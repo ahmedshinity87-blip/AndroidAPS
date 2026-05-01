@@ -5,8 +5,6 @@ on:
     inputs:
       buildVariant:
         description: 'Select Build Variant'
-      tagName:
-        description: 'Select AAPS Version'
         required: true
         default: '3.4.2.2'
         type: choice
