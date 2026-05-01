@@ -148,12 +148,7 @@ jobs:
           echo "✅ Keystore, alias, and key password are valid."
 
           rm -f "$KEYTOOL_LOG"
-          echo "✅ Keystore and credentials validated."
-
-        run: |
-      
-      
-          echo "✅ Access token obtained."
+          echo "✅ Keystore and credentials validated.
 
       - name: Checkout source code at tag
         uses: actions/checkout@v5
@@ -238,10 +233,6 @@ jobs:
         run: |
           mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
           mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-
-        run: |
-          set -e
-          echo "📁 Checking or creating AAPS folder"
           AAPS_FOLDER_ID=$(curl -s -X GET \
             -H "Authorization: Bearer $ACCESS_TOKEN" \
             "https://www.googleapis.com/drive/v3/files?q=name='AAPS'+and+mimeType='application/vnd.google-apps.folder'+and+trashed=false" \
