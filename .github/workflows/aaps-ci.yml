@@ -2,7 +2,7 @@ name: AAPS CI
 
 on:
   workflow_dispatch:
-    inputs:
+    inputs: 
      tagName:
         description: 'Select Build Variant'
         required: true
